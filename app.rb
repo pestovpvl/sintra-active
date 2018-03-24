@@ -69,10 +69,10 @@ get '/visit' do
 end
 
 post '/visit' do
-
   c = Client.new params[:client]
-  c.save
-
-  erb "Thank you!"
-
+  if c.save
+    erb "Thank you!"
+  else
+    erb "Error!"
+  end
 end
