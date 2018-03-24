@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <br>
+      <h1>Do you plane visit?</h1>
+      <p> Please, Fill out the form below... </p>
+
+      <form action="/visit" method="post" role="form" id="barberf">
+
+        <div class="form-group">
+          <input name="username" type="text" class="form-control" placeholder="Your Name" value="<%=@username%>">
+        </div>
+        <div class="form-group">
+          <input name="phone" type="text" class="form-control" placeholder="Your Phone Number" value="<%=@phone%>">
+        </div>
+        <div class="form-group">
+          <input name="datetime" type="text" class="form-control" placeholder="Time for visit" value="<%=@datetime%>">
+        </div>
+
+        <p>Choise, your nail master </p>
+        <div class="input-group ">
+
+          <br>
+          <select name="barber" class="custom-select" form="barberf">
+
+            <% @barbers.each do |item| %>
+              <option <%= @barber == item['name'] ? 'selected' : '' %>><%=  item['name'] %></option>
+            <% end %>
+
+
+          </select>
+
+        </div>
+        <br>
+        <p>Choise your favorite color: <br></p>
+
+
+        <select id="color" name="color">
+          <option value="#7bd148">Green</option>
+          <option value="#5484ed">Bold blue</option>
+          <option value="#a4bdfc">Blue</option>
+          <option value="#46d6db">Turquoise</option>
+          <option value="#7ae7bf">Light green</option>
+          <option value="#51b749">Bold green</option>
+          <option value="#fbd75b">Yellow</option>
+          <option value="#ffb878">Orange</option>
+          <option value="#ff887c">Red</option>
+          <option value="#dc2127">Bold red</option>
+          <option value="#dbadff">Purple</option>
+          <option value="#e1e1e1">Gray</option>
+        </select>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Sent</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function($){
+        $("#color").simplecolorpicker();
+
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

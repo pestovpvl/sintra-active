@@ -23,7 +23,12 @@ helpers do
   end
 end
 
+before '/visit' do
+  @barbers = Barber.all
+end
+
 before '/secure/*' do
+
   unless session[:identity]
     session[:previous_url] = request.path
     @error = 'Sorry, you need to be logged in to visit ' + request.path
@@ -53,4 +58,29 @@ end
 
 get '/secure/place' do
   erb 'This is a secret place that only <%=session[:identity]%> has access to!'
+end
+
+
+get '/visit' do
+  erb :visit
+end
+
+post '/visit' do
+
+  @username = params[:username]
+  @phone = params[:phone]
+  @datetime = params[:datetime]
+  @barbers = params[:barbers]
+  @color = params[:color]
+
+  c = Client.new
+  c.name = @username
+  c.phone = @phone
+  c.datestamp = @datetime
+  c.barber = @barber
+  c.color = @color
+  c.save
+
+  erb "Thank you!"
+
 end
