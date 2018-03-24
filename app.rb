@@ -67,18 +67,7 @@ end
 
 post '/visit' do
 
-  @username = params[:username]
-  @phone = params[:phone]
-  @datetime = params[:datetime]
-  @barbers = params[:barbers]
-  @color = params[:color]
-
-  c = Client.new
-  c.name = @username
-  c.phone = @phone
-  c.datestamp = @datetime
-  c.barber = @barber
-  c.color = @color
+  c = Client.new params[:client]
   c.save
 
   erb "Thank you!"

@@ -8,34 +8,22 @@
       <form action="/visit" method="post" role="form" id="barberf">
 
         <div class="form-group">
-          <input name="username" type="text" class="form-control" placeholder="Your Name" value="<%=@username%>">
+          <input name="client[name]" type="text" class="form-control" placeholder="Your Name" >
         </div>
         <div class="form-group">
-          <input name="phone" type="text" class="form-control" placeholder="Your Phone Number" value="<%=@phone%>">
+          <input name="client[phone]" type="text" class="form-control" placeholder="Your Phone Number" >
         </div>
         <div class="form-group">
-          <input name="datetime" type="text" class="form-control" placeholder="Time for visit" value="<%=@datetime%>">
+          <input name="client[datestamp]" type="text" class="form-control" placeholder="Time for visit" >
         </div>
 
         <p>Choise, your nail master </p>
-        <div class="input-group ">
 
-          <br>
-          <select name="barber" class="custom-select" form="barberf">
-
-            <% @barbers.each do |item| %>
-              <option <%= @barber == item['name'] ? 'selected' : '' %>><%=  item['name'] %></option>
-            <% end %>
-
-
-          </select>
-
-        </div>
         <br>
         <p>Choise your favorite color: <br></p>
 
 
-        <select id="color" name="color">
+        <select id="color" name="client[color]">
           <option value="#7bd148">Green</option>
           <option value="#5484ed">Bold blue</option>
           <option value="#a4bdfc">Blue</option>
